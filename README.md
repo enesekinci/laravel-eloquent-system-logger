@@ -10,6 +10,5 @@
     ## use EnesEkinci\EloquentSystemLogger\Service\LoggerService;
     ## class About extends Model
        {
-    ##    use HasFactory;
     ##    use LoggerService;
    
