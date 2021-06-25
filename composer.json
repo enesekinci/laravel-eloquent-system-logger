@@ -1,0 +1,19 @@
+{
+    "name": "enesekinci/eloquent-system-logger",
+    "description": "It keeps user-based logs of creation, update and deletion of Laravel ORM Models.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "enesekinci",
+            "email": "enes.eknc.96@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "EnesEkinci\\EloquentSystemLogger\\": "src/"
+        }
+    }
+}
