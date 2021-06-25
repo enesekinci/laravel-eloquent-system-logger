@@ -15,7 +15,7 @@ class CreateSystemLoggersTable extends Migration
     {
         Schema::create('system_loggers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->nullable();
             $table->string('request_ip');
             $table->text('model');
             $table->string('table');
