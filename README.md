@@ -7,8 +7,8 @@
 ## 01 - add to providers config/app.php  => EnesEkinci\EloquentSystemLogger\EloquentSystemLoggerServiceProvider::class,
 ## 02 - example using;
     
-    ## use EnesEkinci\EloquentSystemLogger\Service\LoggerService;
-    ## class About extends Model
+     use EnesEkinci\EloquentSystemLogger\Service\LoggerService;
+     class About extends Model
        {
-    ##    use LoggerService;
+        use LoggerService;
    
