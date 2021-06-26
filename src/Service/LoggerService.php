@@ -10,16 +10,16 @@ trait LoggerService
 {
     protected static function boot()
     {
+        $authId = Auth::id() ?? null;
+        $requestIp = request()->ip();
 
-        static::created(function ($model) {
-            Log::info(["createdProcess", $model->getRawOriginal(), $model->getAttributes()]);
-
+        static::created(function ($model) use ($authId, $requestIp) {
             $tableName = $model->getTable();
             $process =  "create";
 
             LoggerModel::create([
-                'user_id' => Auth::id() ?? null,
-                'request_ip' => request()->ip(),
+                'user_id' => $authId,
+                'request_ip' => $requestIp,
                 'model' => get_class($model),
                 'table' => $tableName,
                 'row' => $model->id,
@@ -28,12 +28,13 @@ trait LoggerService
             ]);
         });
 
-        static::updated(function ($model) {
+        static::updated(function ($model) use ($authId, $requestIp) {
             $tableName = $model->getTable();
             $process =  "update";
 
             LoggerModel::create([
-                'user_id' => Auth::id(),
+                'user_id' => $authId,
+                'request_ip' => $requestIp,
                 'model' => get_class($model),
                 'table' => $tableName,
                 'row' => $model->id,
@@ -46,12 +47,13 @@ trait LoggerService
             ]);
         });
 
-        static::deleted(function ($model) {
+        static::deleted(function ($model) use ($authId, $requestIp) {
             $tableName = $model->getTable();
             $process =  "delete";
 
             LoggerModel::create([
-                'user_id' => Auth::id(),
+                'user_id' => $authId,
+                'request_ip' => $requestIp,
                 'model' => get_class($model),
                 'table' => $tableName,
                 'row' => $model->id,
