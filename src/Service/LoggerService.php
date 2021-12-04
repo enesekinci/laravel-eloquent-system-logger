@@ -10,6 +10,8 @@ trait LoggerService
 {
     protected static function boot()
     {
+        parent::boot();
+        
         $authId = Auth::id() ?? null;
         $requestIp = request()->ip();
 
@@ -61,8 +63,6 @@ trait LoggerService
                 'content' => json_encode(['original' => $model->getAttributes()]),
             ]);
         });
-
-        parent::boot();
     }
 
     public static function differenceOfContents($model)
