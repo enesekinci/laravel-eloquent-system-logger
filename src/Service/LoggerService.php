@@ -71,6 +71,13 @@ trait LoggerService
         $newContent = $model->getAttributes();
         $differentContent =  array_diff($originalContent, $newContent);
         if (isset($differentContent['updated_at'])) unset($differentContent['updated_at']);
-        return $differentContent;
+
+        $differentAttributes = [];
+
+        foreach ($differentContent as $key => $content) {
+            $isJson = json_decode($content);
+            $differentAttributes[$key] = $isJson ?? $content;
+        }
+        return $differentAttributes;
     }
 }
