@@ -10,8 +10,9 @@ trait LoggerService
 {
     protected static function boot()
     {
-        parent::boot();
-        
+        //parent::boot();
+        static::bootTraits();
+
         $authId = Auth::id() ?? null;
         $requestIp = request()->ip();
 
